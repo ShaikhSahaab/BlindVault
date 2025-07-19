@@ -152,11 +152,13 @@ function logoutUser(showExitToast = true) {
     );
 
     setTimeout(() => {
-      showHome();
-      location.reload();
-    }, 2200);
+      // Clear entire session and reload
+      sessionStorage.clear();
+      location.reload(true); // true = force reload from server (if available)
+    }, 4000);
   } else {
-    showHome();
+    sessionStorage.clear();
+    location.reload(true);
   }
 }
 
@@ -376,15 +378,15 @@ function adminLogin() {
 
 function logoutAdmin() {
   currentAdmin = false;
-  sessionStorage.removeItem("adminLoggedIn");
+  sessionStorage.clear();
   localStorage.removeItem("adminRemembered");
 
   showToast("Thank You for Login 👑", true);
   setTimeout(() => {
-    showHome();
-    location.reload();
-  }, 2000);
+    location.reload(true);
+  }, 4000);
 }
+
 
 function showAdminDashboard() {
   showSection('admin-profile');
