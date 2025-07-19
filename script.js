@@ -153,6 +153,7 @@ function logoutUser(showExitToast = true) {
 
     setTimeout(() => {
       showHome();
+      location.reload();
     }, 2200);
   } else {
     showHome();
@@ -381,6 +382,7 @@ function logoutAdmin() {
   showToast("Thank You for Login 👑", true);
   setTimeout(() => {
     showHome();
+    location.reload();
   }, 2000);
 }
 
