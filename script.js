@@ -603,3 +603,11 @@ function b64toBlob(base64, mimeType) {
   }
   return new Blob(byteArrays, { type: mimeType });
 }
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('/service-worker.js')
+      .then(reg => console.log('✅ Service Worker registered:', reg.scope))
+      .catch(err => console.error('❌ Service Worker registration failed:', err));
+  });
+}
